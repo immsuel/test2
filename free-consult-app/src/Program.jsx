@@ -5,26 +5,25 @@ const Program = ({ numAnswered, nextClick, prevClick }) => {
 
   let firstName
   let lastName
-  let email
   let phoneNumber
   let business
   let service 
   let website 
 
-  const sendEmail = (message) => {
-    Email.send({
-      Host: "smtp.gmail.com",
-      Username: "immanuelshipale08@gmail.com",
-      Password: "Shipale4035",
-      To: 'immanuelshipale08@gmail.com',
-      From: "immanuelshipale08@gmail.com",
-      Subject: "This is the subject",
-      Body: "Test ga",
-    }).then(
-      message => console.log("sent successfully"),
-      error => console("Error email: " + error)
-    );
-  }
+  //const sendEmail = (message) => {
+    //Email.send({
+      //Host: "smtp.gmail.com",
+    //  Username: "immanuelshipale08@gmail.com",
+   //   Password: "Shipale4035",
+   //   To: 'immanuelshipale08@gmail.com',
+    //  From: "immanuelshipale08@gmail.com",
+   //   Subject: "This is the subject",
+   //   Body: "Test ga",
+   // }).then(
+   //   message => console.log("sent successfully"),
+  //    error => console("Error email: " + error)
+  //  );
+ // }
   
   useCalendlyEventListener({
     onProfilePageViewed: () => console.log("onProfilePageViewed"),
@@ -54,8 +53,9 @@ const Program = ({ numAnswered, nextClick, prevClick }) => {
       <div className="main">
         <h1 className="titleText">Welcome!</h1>
         <p className="subText">Please take a moment to answer a few questions to give us an idea of how we could serve you best. You can expect to hear back within 24 hours.</p>
-        <button className="nextBtn" onClick={() => {nextClick(); const message = `${firstName}, ${lastName}, ${email}, ${phoneNumber}, ${business}, ${service}, ${website}`;
-      sendEmail(message);}}>Next</button>
+        <button className="nextBtn" onClick={() => {nextClick(); //const message = `${firstName}, ${lastName}, ${email}, ${phoneNumber}, ${business}, ${service}, ${website}`;
+      //sendEmail(message);
+      }}>Next</button>
       </div>
     );
   }
@@ -75,10 +75,12 @@ const Program = ({ numAnswered, nextClick, prevClick }) => {
           nextClick();
           firstName = document.getElementById("firstName").value;
           lastName = document.getElementById("lastName").value;
-          email = document.getElementById("email").value;
+          //email = document.getElementById("email").value;
           phoneNumber = document.getElementById("phoneNumber").value;
   
-          console.log(firstName, lastName, email, phoneNumber);
+          console.log(firstName, lastName, 
+            //email, 
+            phoneNumber);
         }}>Next</button>
       </div>
     );
@@ -92,7 +94,7 @@ const Program = ({ numAnswered, nextClick, prevClick }) => {
           <input id="business" className="enterMessage" placeholder="Enter your message"></input>
           <br />
           <button className="backBtn" onClick={prevClick}>Back</button>
-          <button className="nextBtn" onClick={() => {sendEmail();
+          <button className="nextBtn" onClick={() => {
             nextClick();
             business = document.getElementById("business").value;
           }}>Next</button>
